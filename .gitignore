@@ -1,0 +1,28 @@
+# GNS3 project files 
+*.log
+*.tmp
+*.bak
+
+# Automatically generated directories
+project-files/
+snapshots/
+
+# Disk images/ appliance
+*.qcow2
+*.img
+*.bin
+*.vmdk
+*.iso
+
+# Local configs
+*.lock
+*.swp
+*.cache
+
+# Python 
+__pycache__/
+*.pyc
+
+# OS junk
+.DS_Store
+Thumbs.db
