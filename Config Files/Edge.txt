@@ -1,7 +1,5 @@
-Edge#show startup-config
-Using 1795 out of 524288 bytes
-!
-! Last configuration change at 18:39:02 UTC Thu Nov 5 2026
+Edge(config)#do show startup-config
+Using 2031 out of 524288 bytes
 !
 version 17.12
 service timestamps debug datetime msec
@@ -22,8 +20,8 @@ no aaa new-model
 !
 !
 !
-!         
-!         
+!
+!
 !         
 !         
 !         
@@ -41,7 +39,16 @@ no ipv6 cef
 multilink bundle-name authenticated
 !         
 !         
+crypto pki trustpoint TP-self-signed-2048039
+ enrollment selfsigned
+ subject-name cn=IOS-Self-Signed-Certificate-2048039
+ revocation-check none
+ rsakeypair TP-self-signed-2048039
+ hash sha256
 !         
+!         
+crypto pki certificate chain TP-self-signed-2048039
+ certificate self-signed 01 nvram:IOS-Self-Sig#1.cer
 !         
 !         
 memory free low-watermark processor 81225
@@ -72,16 +79,16 @@ spanning-tree mode rapid-pvst
 !         
 !         
 interface Ethernet0/0
- ip address 172.17.10.2 255.255.255.0
- ipv6 address 2001:DB8:300:10::2/64
+ ip address 10.17.80.1 255.255.255.0
+ ipv6 address 2001:DB8:A1:80::1/64
 !         
 interface Ethernet0/1
  ip address 10.17.10.1 255.255.255.0
  ipv6 address 2001:DB8:A1:10::1/64
 !         
 interface Ethernet0/2
- ip address 10.16.10.1 255.255.255.0
- ipv6 address 2001:DB8:A0:10::1/64
+ ip address 10.16.70.1 255.255.255.0
+ ipv6 address 2001:DB8:A0:70::1/64
 !         
 interface Ethernet0/3
  no ip address
@@ -168,4 +175,4 @@ line vty 0 4
 !         
 !         
 !         
-end  
+end    
