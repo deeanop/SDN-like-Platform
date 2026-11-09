@@ -1,7 +1,7 @@
 AppsA#show startup-config
-Using 1265 out of 10240 bytes
+Using 1797 out of 10240 bytes
 !
-! Last configuration change at 17:42:57 UTC Thu Nov 5 2026
+! Last configuration change at 09:55:07 UTC Mon Nov 9 2026
 !
 version 17.12
 service timestamps debug datetime msec
@@ -42,7 +42,16 @@ no ipv6 cef
 vtp version 1
 multilink bundle-name authenticated
 !         
+crypto pki trustpoint TP-self-signed-2048033
+ enrollment selfsigned
+ subject-name cn=IOS-Self-Signed-Certificate-2048033
+ revocation-check none
+ rsakeypair TP-self-signed-2048033
+ hash sha256
 !         
+!         
+crypto pki certificate chain TP-self-signed-2048033
+ certificate self-signed 01 nvram:IOS-Self-Sig#1.cer
 !         
 !         
 memory free low-watermark processor 54375
@@ -63,8 +72,14 @@ interface Ethernet0/0
 interface Ethernet0/1
 !         
 interface Ethernet0/2
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 10
+ switchport mode trunk
 !         
 interface Ethernet0/3
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 10
+ switchport mode trunk
 !         
 interface Ethernet1/0
 !         
@@ -89,6 +104,10 @@ interface Ethernet3/1
 interface Ethernet3/2
 !         
 interface Ethernet3/3
+!         
+interface Vlan1
+ no ip address
+ shutdown 
 !         
 interface Vlan10
  ip address 172.16.10.8 255.255.255.0
@@ -118,4 +137,4 @@ line vty 0 4
  transport input ssh
 !         
 !         
-end       
+end  

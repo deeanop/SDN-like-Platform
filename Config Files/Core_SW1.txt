@@ -1,13 +1,13 @@
-Core-SW2#show startup-config
-Using 1355 out of 10240 bytes
+Core-SW1#show startup-config
+Using 2554 out of 10240 bytes
 !
-! Last configuration change at 18:02:41 UTC Thu Nov 5 2026
+! Last configuration change at 08:18:02 UTC Mon Nov 9 2026
 !
 version 17.12
 service timestamps debug datetime msec
 service timestamps log datetime msec
 !
-hostname Core-SW2
+hostname Core-SW1
 !
 boot-start-marker
 boot-end-marker
@@ -42,7 +42,16 @@ no ipv6 cef
 vtp version 1
 multilink bundle-name authenticated
 !         
+crypto pki trustpoint TP-self-signed-2048011
+ enrollment selfsigned
+ subject-name cn=IOS-Self-Signed-Certificate-2048011
+ revocation-check none
+ rsakeypair TP-self-signed-2048011
+ hash sha256
 !         
+!         
+crypto pki certificate chain TP-self-signed-2048011
+ certificate self-signed 01 nvram:IOS-Self-Sig#1.cer
 !         
 !         
 memory free low-watermark processor 54375
@@ -58,26 +67,57 @@ vlan internal allocation policy ascending
 !         
 !         
 !         
+interface Port-channel5
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 10
+ switchport mode trunk
+!         
+interface Port-channel7
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 10
+ switchport mode trunk
+!         
 interface Ethernet0/0
  no switchport
- ip address 10.10.10.2 255.255.255.0
- ipv6 address 2001:DB8:D2:10::2/64
+ ip address 10.10.10.1 255.255.255.0
+ ipv6 address 2001:DB8:D1:10::1/64
 !         
 interface Ethernet0/1
 !         
 interface Ethernet0/2
 !         
 interface Ethernet0/3
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 10
+ switchport mode trunk
+ channel-group 5 mode passive
 !         
 interface Ethernet1/0
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 10
+ switchport mode trunk
+ channel-group 5 mode passive
 !         
 interface Ethernet1/1
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 10
+ switchport mode trunk
+ channel-group 7 mode passive
 !         
 interface Ethernet1/2
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 10
+ switchport mode trunk
+ channel-group 7 mode passive
 !         
 interface Ethernet1/3
+ no switchport
+ ip address 10.15.1.2 255.255.255.0
+ ipv6 address 2001:DB8:DD:1::2/64
 !         
 interface Ethernet2/0
+ no switchport
+ no ip address
 !         
 interface Ethernet2/1
 !         
@@ -93,9 +133,13 @@ interface Ethernet3/2
 !         
 interface Ethernet3/3
 !         
+interface Vlan1
+ no ip address
+ shutdown 
+!         
 interface Vlan10
- ip address 172.16.10.2 255.255.255.0
- ipv6 address 2001:DB8:200:10::2/64
+ ip address 172.16.10.1 255.255.255.0
+ ipv6 address 2001:DB8:200:10::1/64
 !         
 ip forward-protocol nd
 !         
@@ -121,4 +165,4 @@ line vty 0 4
  transport input ssh
 !         
 !         
-end   
+end 

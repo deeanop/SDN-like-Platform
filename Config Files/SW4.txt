@@ -1,7 +1,7 @@
 SW4#show startup-config
-Using 1266 out of 10240 bytes
+Using 2808 out of 10240 bytes
 !
-! Last configuration change at 17:22:22 UTC Mon Nov 2 2026
+! Last configuration change at 07:43:46 UTC Mon Nov 9 2026
 !
 version 17.12
 service timestamps debug datetime msec
@@ -42,7 +42,16 @@ no ipv6 cef
 vtp version 1
 multilink bundle-name authenticated
 !         
+crypto pki trustpoint TP-self-signed-2048001
+ enrollment selfsigned
+ subject-name cn=IOS-Self-Signed-Certificate-2048001
+ revocation-check none
+ rsakeypair TP-self-signed-2048001
+ hash sha256
 !         
+!         
+crypto pki certificate chain TP-self-signed-2048001
+ certificate self-signed 01 nvram:IOS-Self-Sig#1.cer
 !         
 !         
 memory free low-watermark processor 54375
@@ -58,19 +67,61 @@ vlan internal allocation policy ascending
 !         
 !         
 !         
+interface Port-channel5
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 10
+ switchport mode trunk
+!         
+interface Port-channel7
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 10
+ switchport mode trunk
+!         
+interface Port-channel9
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 10
+ switchport mode trunk
+!         
 interface Ethernet0/0
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 10
+ switchport mode trunk
+ channel-group 7 mode auto
 !         
 interface Ethernet0/1
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 10
+ switchport mode trunk
+ channel-group 7 mode auto
 !         
 interface Ethernet0/2
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 10
+ switchport mode trunk
+ channel-group 5 mode auto
 !         
 interface Ethernet0/3
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 10
+ switchport mode trunk
+ channel-group 5 mode auto
 !         
 interface Ethernet1/0
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 10
+ switchport mode trunk
+ channel-group 9 mode desirable
 !         
 interface Ethernet1/1
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 10
+ switchport mode trunk
+ channel-group 9 mode desirable
 !         
 interface Ethernet1/2
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 10
+ switchport mode trunk
 !         
 interface Ethernet1/3
 !         
@@ -89,6 +140,10 @@ interface Ethernet3/1
 interface Ethernet3/2
 !         
 interface Ethernet3/3
+!         
+interface Vlan1
+ no ip address
+ shutdown 
 !         
 interface Vlan10
  ip address 192.168.10.18 255.255.255.0
@@ -118,4 +173,4 @@ line vty 0 4
  transport input ssh
 !         
 !         
-end  
+end   
