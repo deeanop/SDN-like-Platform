@@ -1,7 +1,7 @@
 Core-SW2#show startup-config
-Using 2592 out of 10240 bytes
+Using 2629 out of 10240 bytes
 !
-! Last configuration change at 19:26:22 UTC Mon Nov 9 2026
+! Last configuration change at 21:02:33 UTC Mon Nov 9 2026
 !
 version 17.12
 service timestamps debug datetime msec
@@ -60,6 +60,7 @@ memory free low-watermark processor 54375
 !         
 spanning-tree mode rapid-pvst
 spanning-tree extend system-id
+spanning-tree vlan 10 priority 28672
 !         
 !         
 vlan internal allocation policy ascending
@@ -166,4 +167,4 @@ line vty 0 4
  transport input ssh
 !         
 !         
-end    
+end  
