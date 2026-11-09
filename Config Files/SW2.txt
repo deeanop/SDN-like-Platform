@@ -1,5 +1,5 @@
 SW2#show startup-config
-Using 2209 out of 262144 bytes, uncompressed size = 4406 bytes
+Using 2235 out of 262144 bytes, uncompressed size = 4455 bytes
 !
 ! Last configuration change at 19:18:34 UTC Thu Nov 5 2026
 !
@@ -26,7 +26,8 @@ no aaa new-model
 !         
 !         
 ip cef    
-no ipv6 cef
+ipv6 unicast-routing
+ipv6 cef  
 !         
 !         
 !         
@@ -77,6 +78,7 @@ interface GigabitEthernet0/0
 interface GigabitEthernet0/1
  switchport trunk allowed vlan 10
  switchport trunk encapsulation dot1q
+ --More-- 
  switchport mode trunk
  negotiation auto
  channel-group 8 mode active
@@ -131,13 +133,14 @@ interface Vlan10
  ip address 172.16.10.17 255.255.255.0
  ipv6 address 2001:DB8:200:10::17/64
 !         
+ip default-gateway 172.16.10.3
 ip forward-protocol nd
 !         
 ip http server
 !         
 ip ssh server algorithm encryption aes128-ctr aes192-ctr aes256-ctr
 ip ssh client algorithm encryption aes128-ctr aes192-ctr aes256-ctr
-!         
+ --More-         
 !         
 !         
 !         
@@ -161,7 +164,7 @@ Supplemental End User License Restrictions
           
 This IOSv software is provided AS-IS without warranty of any kind. Under no circumstances may this software be used separate from the Cisco Modeling Labs Software that this software was provided with, or deployed or used as part of a production environment.
           
-By using the software, you agree to abide by the terms and conditions of the Cisco End User License Agreement at http://www.cisco.com/go/eula. Unauthorized use or distribution of this software is expressly prohibited.
+By using the software, you agree to abide by the terms and conditions of the Cisco End User License Agreement at http://www.cisco.com/go/eula. Unauthorized use or distribution of this 
 ^C        
 banner login ^C
 IOSv - Cisco Systems Confidential -
@@ -170,12 +173,11 @@ Supplemental End User License Restrictions
           
 This IOSv software is provided AS-IS without warranty of any kind. Under no circumstances may this software be used separate from the Cisco Modeling Labs Software that this software was provided with, or deployed or used as part of a production environment.
           
-By using the software, you agree to abide by the terms and conditions of the Cisco End User License Agreement at http://www.cisco.com/go/eula. Unauthorized use or distribution of this software is expressly prohibited.
-^C        
+By using the software, you agree to abide by the terms and conditions of the Cisco End User License Agreement at http://www.cisco.com/go/eula. Unauthorized use or distribution of this software is expressly prohibited.        
 !         
 line con 0
 line aux 0
 line vty 0 4
 !         
 !         
-end       
+end   

@@ -1,7 +1,5 @@
 C1#show startup-config
-Using 1825 out of 10240 bytes
-!
-! Last configuration change at 17:46:09 UTC Thu Nov 5 2026
+Using 1782 out of 10240 bytes
 !
 version 17.12
 service timestamps debug datetime msec
@@ -22,14 +20,15 @@ no aaa new-model
 !
 !
 !
-!         
-!         
+!
+!
 !         
 !         
 !         
 ip cef    
 login on-success log
-no ipv6 cef
+ipv6 unicast-routing
+ipv6 cef  
 !         
 !         
 !         

@@ -1,7 +1,7 @@
 R1#show startup-config
-Using 1812 out of 10240 bytes
+Using 2305 out of 10240 bytes
 !
-! Last configuration change at 17:28:23 UTC Thu Nov 5 2026
+! Last configuration change at 19:16:45 UTC Mon Nov 9 2026
 !
 version 17.12
 service timestamps debug datetime msec
@@ -29,7 +29,8 @@ no aaa new-model
 !         
 ip cef    
 login on-success log
-no ipv6 cef
+ipv6 unicast-routing
+ipv6 cef  
 !         
 !         
 !         
@@ -41,7 +42,16 @@ no ipv6 cef
 multilink bundle-name authenticated
 !         
 !         
+crypto pki trustpoint TP-self-signed-2048003
+ enrollment selfsigned
+ subject-name cn=IOS-Self-Signed-Certificate-2048003
+ revocation-check none
+ rsakeypair TP-self-signed-2048003
+ hash sha256
 !         
+!         
+crypto pki certificate chain TP-self-signed-2048003
+ certificate self-signed 01 nvram:IOS-Self-Sig#1.cer
 !         
 !         
 memory free low-watermark processor 55011
@@ -77,6 +87,13 @@ interface Ethernet0/0
 interface Ethernet0/0.10
  encapsulation dot1Q 10
  ip address 192.168.10.1 255.255.255.0
+ standby version 2
+ standby 10 ip 192.168.10.3
+ standby 10 priority 120
+ standby 10 preempt
+ standby 11 ipv6 2001:DB8:100:10::3/64
+ standby 11 priority 120
+ standby 11 preempt
  ipv6 address 2001:DB8:100:10::1/64
 !         
 interface Ethernet0/1
@@ -172,4 +189,4 @@ line vty 0 4
 !         
 !         
 !         
-end       
+end      

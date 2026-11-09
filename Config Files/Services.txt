@@ -1,7 +1,7 @@
 Services#show startup-config
-Using 2171 out of 10240 bytes
+Using 2220 out of 10240 bytes
 !
-! Last configuration change at 08:27:16 UTC Mon Nov 9 2026
+! Last configuration change at 19:32:28 UTC Mon Nov 9 2026
 !
 version 17.12
 service timestamps debug datetime msec
@@ -31,7 +31,8 @@ ip audit notify log
 ip audit po max-events 100
 ip cef    
 login on-success log
-no ipv6 cef
+ipv6 unicast-routing
+ipv6 cef  
 !         
 !         
 !         
@@ -126,6 +127,7 @@ interface Vlan10
  ip address 172.16.10.12 255.255.255.0
  ipv6 address 2001:DB8:200:10::12/64
 !         
+ip default-gateway 172.16.10.3
 ip forward-protocol nd
 !         
 !         

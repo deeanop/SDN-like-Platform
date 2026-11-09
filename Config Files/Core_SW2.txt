@@ -1,7 +1,7 @@
 Core-SW2#show startup-config
-Using 2439 out of 10240 bytes
+Using 2592 out of 10240 bytes
 !
-! Last configuration change at 08:19:11 UTC Mon Nov 9 2026
+! Last configuration change at 19:26:22 UTC Mon Nov 9 2026
 !
 version 17.12
 service timestamps debug datetime msec
@@ -31,7 +31,8 @@ ip audit notify log
 ip audit po max-events 100
 ip cef    
 login on-success log
-no ipv6 cef
+ipv6 unicast-routing
+ipv6 cef  
 !         
 !         
 !         
@@ -134,6 +135,11 @@ interface Vlan1
 !         
 interface Vlan10
  ip address 172.16.10.2 255.255.255.0
+ standby version 2
+ standby 10 ip 172.16.10.3
+ standby 10 priority 110
+ standby 11 ipv6 2001:DB8:200:10::3/64
+ standby 11 priority 110
  ipv6 address 2001:DB8:200:10::2/64
 !         
 ip forward-protocol nd
@@ -160,4 +166,4 @@ line vty 0 4
  transport input ssh
 !         
 !         
-end       
+end    

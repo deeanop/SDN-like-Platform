@@ -1,5 +1,5 @@
-Edge(config)#do show startup-config
-Using 2031 out of 524288 bytes
+Edge#show startup-config
+Using 2049 out of 524288 bytes
 !
 version 17.12
 service timestamps debug datetime msec
@@ -27,7 +27,8 @@ no aaa new-model
 !         
 ip cef    
 login on-success log
-no ipv6 cef
+ipv6 unicast-routing
+ipv6 cef  
 !         
 !         
 !         
@@ -175,4 +176,4 @@ line vty 0 4
 !         
 !         
 !         
-end    
+end  

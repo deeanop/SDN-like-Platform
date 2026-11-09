@@ -1,7 +1,7 @@
-AppsB#show startup-config
-Using 1797 out of 10240 bytes
+AppsB#show startup-config 
+Using 1846 out of 10240 bytes
 !
-! Last configuration change at 09:57:24 UTC Mon Nov 9 2026
+! Last configuration change at 19:34:27 UTC Mon Nov 9 2026
 !
 version 17.12
 service timestamps debug datetime msec
@@ -31,7 +31,8 @@ ip audit notify log
 ip audit po max-events 100
 ip cef    
 login on-success log
-no ipv6 cef
+ipv6 unicast-routing
+ipv6 cef  
 !         
 !         
 !         
@@ -113,6 +114,7 @@ interface Vlan10
  ip address 172.16.10.9 255.255.255.0
  ipv6 address 2001:DB8:200:10::9/64
 !         
+ip default-gateway 172.16.10.3
 ip forward-protocol nd
 !         
 !         
@@ -137,4 +139,4 @@ line vty 0 4
  transport input ssh
 !         
 !         
-end       
+end  

@@ -1,7 +1,7 @@
 SW3#show startup-config
-Using 2209 out of 262144 bytes, uncompressed size = 4413 bytes
+Using 2235 out of 262144 bytes, uncompressed size = 4462 bytes
 !
-! Last configuration change at 08:02:05 UTC Mon Nov 9 2026
+! Last configuration change at 19:38:25 UTC Mon Nov 9 2026
 !
 version 15.2
 service timestamps debug datetime msec
@@ -26,7 +26,8 @@ no aaa new-model
 !         
 !         
 ip cef    
-no ipv6 cef
+ipv6 unicast-routing
+ipv6 cef  
 !         
 !         
 !         
@@ -131,6 +132,7 @@ interface Vlan10
  ip address 172.16.10.16 255.255.255.0
  ipv6 address 2001:DB8:200:10::16/64
 !         
+ip default-gateway 172.16.10.3
 ip forward-protocol nd
 !         
 ip http server
@@ -179,4 +181,4 @@ line vty 0 4
  login    
 !         
 !         
-end  
+end   

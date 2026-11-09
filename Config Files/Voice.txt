@@ -1,7 +1,7 @@
 Voice#show startup-config
-Using 1978 out of 10240 bytes
+Using 2217 out of 10240 bytes
 !
-! Last configuration change at 07:59:26 UTC Mon Nov 9 2026
+! Last configuration change at 19:37:00 UTC Mon Nov 9 2026
 !
 version 17.12
 service timestamps debug datetime msec
@@ -31,7 +31,8 @@ ip audit notify log
 ip audit po max-events 100
 ip cef    
 login on-success log
-no ipv6 cef
+ipv6 unicast-routing
+ipv6 cef  
 !         
 !         
 !         
@@ -73,8 +74,14 @@ interface Port-channel4
  switchport mode trunk
 !         
 interface Ethernet0/0
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 10
+ switchport mode trunk
 !         
 interface Ethernet0/1
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 10
+ switchport mode trunk
 !         
 interface Ethernet0/2
  switchport trunk encapsulation dot1q
@@ -120,6 +127,7 @@ interface Vlan10
  ip address 172.16.10.15 255.255.255.0
  ipv6 address 2001:DB8:200:10::15/64
 !         
+ip default-gateway 172.16.10.3
 ip forward-protocol nd
 !         
 !         
@@ -144,4 +152,4 @@ line vty 0 4
  transport input ssh
 !         
 !         
-end   
+end    

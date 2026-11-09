@@ -1,7 +1,5 @@
 C3#show startup-config
-Using 1791 out of 10240 bytes
-!
-! Last configuration change at 18:06:13 UTC Thu Nov 5 2026
+Using 2047 out of 10240 bytes
 !
 version 17.12
 service timestamps debug datetime msec
@@ -22,14 +20,15 @@ no aaa new-model
 !
 !
 !
-!         
-!         
+!
+!
 !         
 !         
 !         
 ip cef    
 login on-success log
-no ipv6 cef
+ipv6 unicast-routing
+ipv6 cef  
 !         
 !         
 !         
@@ -41,7 +40,16 @@ no ipv6 cef
 multilink bundle-name authenticated
 !         
 !         
+crypto pki trustpoint TP-self-signed-2048009
+ enrollment selfsigned
+ subject-name cn=IOS-Self-Signed-Certificate-2048009
+ revocation-check none
+ rsakeypair TP-self-signed-2048009
+ hash sha256
 !         
+!         
+crypto pki certificate chain TP-self-signed-2048009
+ certificate self-signed 01 nvram:IOS-Self-Sig#1.cer
 !         
 !         
 memory free low-watermark processor 55011

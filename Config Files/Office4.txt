@@ -1,7 +1,7 @@
 Office4#show startup-config
-Using 2177 out of 10240 bytes
+Using 2227 out of 10240 bytes
 !
-! Last configuration change at 16:19:24 UTC Sun Nov 8 2026
+! Last configuration change at 19:14:21 UTC Mon Nov 9 2026
 !
 version 17.12
 service timestamps debug datetime msec
@@ -31,7 +31,8 @@ ip audit notify log
 ip audit po max-events 100
 ip cef    
 login on-success log
-no ipv6 cef
+ipv6 unicast-routing
+ipv6 cef  
 !         
 !         
 !         
@@ -126,6 +127,7 @@ interface Vlan10
  ip address 192.168.10.15 255.255.255.0
  ipv6 address 2001:DB8:100:10::15/64
 !         
+ip default-gateway 192.168.10.3
 ip forward-protocol nd
 !         
 !         
