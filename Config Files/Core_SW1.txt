@@ -1,7 +1,7 @@
 Core-SW1#show startup-config
-Using 2784 out of 10240 bytes
+Using 3017 out of 10240 bytes
 !
-! Last configuration change at 21:01:27 UTC Mon Nov 9 2026
+! Last configuration change at 23:14:33 UTC Mon Nov 9 2026
 !
 version 17.12
 service timestamps debug datetime msec
@@ -83,6 +83,7 @@ interface Ethernet0/0
  no switchport
  ip address 10.10.10.1 255.255.255.0
  ipv6 address 2001:DB8:D1:10::1/64
+ ipv6 eigrp 100
 !         
 interface Ethernet0/1
 !         
@@ -116,6 +117,7 @@ interface Ethernet1/3
  no switchport
  ip address 10.15.1.2 255.255.255.0
  ipv6 address 2001:DB8:DD:1::2/64
+ ipv6 eigrp 100
 !         
 interface Ethernet2/0
  no switchport
@@ -149,6 +151,14 @@ interface Vlan10
  standby 11 priority 120
  standby 11 preempt
  ipv6 address 2001:DB8:200:10::1/64
+ ipv6 eigrp 100
+!         
+!         
+router eigrp 100
+ network 10.10.10.0 0.0.0.255
+ network 10.15.1.0 0.0.0.255
+ network 172.16.10.0 0.0.0.255
+ eigrp router-id 1.1.1.1
 !         
 ip forward-protocol nd
 !         
@@ -157,6 +167,9 @@ ip http server
 ip http secure-server
 ip ssh bulk-mode 131072
 !         
+!         
+ipv6 router eigrp 100
+ eigrp router-id 1.1.1.1
 !         
 !         
 !         
@@ -174,4 +187,4 @@ line vty 0 4
  transport input ssh
 !         
 !         
-end   
+end 

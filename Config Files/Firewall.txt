@@ -1,5 +1,7 @@
 Firewall#show startup-config
-Using 1822 out of 10240 bytes
+Using 2416 out of 10240 bytes
+!
+! Last configuration change at 23:24:44 UTC Mon Nov 9 2026
 !
 version 17.12
 service timestamps debug datetime msec
@@ -20,8 +22,8 @@ no aaa new-model
 !
 !
 !
-!
-!
+!         
+!         
 !         
 !         
 !         
@@ -40,7 +42,16 @@ ipv6 cef
 multilink bundle-name authenticated
 !         
 !         
+crypto pki trustpoint TP-self-signed-2048013
+ enrollment selfsigned
+ subject-name cn=IOS-Self-Signed-Certificate-2048013
+ revocation-check none
+ rsakeypair TP-self-signed-2048013
+ hash sha256
 !         
+!         
+crypto pki certificate chain TP-self-signed-2048013
+ certificate self-signed 01 nvram:IOS-Self-Sig#1.cer
 !         
 !         
 memory free low-watermark processor 55011
@@ -73,10 +84,12 @@ spanning-tree mode rapid-pvst
 interface Ethernet0/0
  ip address 10.15.1.1 255.255.255.0
  ipv6 address 2001:DB8:DD:1::1/64
+ ipv6 eigrp 100
 !         
 interface Ethernet0/1
  ip address 172.17.10.1 255.255.255.0
  ipv6 address 2001:DB8:300:10::1/64
+ ipv6 eigrp 100
 !         
 interface Ethernet0/2
  no ip address
@@ -85,6 +98,7 @@ interface Ethernet0/2.10
  encapsulation dot1Q 10
  ip address 172.18.10.1 255.255.255.0
  ipv6 address 2001:DB8:400:10::1/64
+ ipv6 eigrp 100
 !         
 interface Ethernet0/3
  no ip address
@@ -146,12 +160,22 @@ interface Serial3/3
  shutdown 
  serial restart-delay 0
 !         
+!         
+router eigrp 100
+ network 10.15.1.0 0.0.0.255
+ network 172.17.10.0 0.0.0.255
+ network 172.18.10.0 0.0.0.255
+ eigrp router-id 2.2.2.2
+!         
 ip forward-protocol nd
 !         
 !         
 ip http server
 ip http secure-server
 ip ssh bulk-mode 131072
+!         
+ipv6 router eigrp 100
+ eigrp router-id 2.2.2.2
 !         
 !         
 !         
@@ -171,4 +195,4 @@ line vty 0 4
 !         
 !         
 !         
-end  
+end   
