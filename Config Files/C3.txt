@@ -1,5 +1,7 @@
 C3#show startup-config
-Using 2047 out of 10240 bytes
+Using 2354 out of 10240 bytes
+!
+! Last configuration change at 23:08:54 UTC Mon Nov 9 2026
 !
 version 17.12
 service timestamps debug datetime msec
@@ -20,8 +22,8 @@ no aaa new-model
 !
 !
 !
-!
-!
+!         
+!         
 !         
 !         
 !         
@@ -82,14 +84,17 @@ spanning-tree mode rapid-pvst
 interface Ethernet0/0
  ip address 10.13.10.1 255.255.255.0
  ipv6 address 2001:DB8:C3:10::1/64
+ ipv6 ospf 1 area 0
 !         
 interface Ethernet0/1
  ip address 10.12.10.2 255.255.255.0
  ipv6 address 2001:DB8:C2:10::2/64
+ ipv6 ospf 1 area 0
 !         
 interface Ethernet0/2
  ip address 10.10.10.3 255.255.255.0
  ipv6 address 2001:DB8:D2:10::3/64
+ ipv6 ospf 1 area 0
 !         
 interface Ethernet0/3
  no ip address
@@ -151,12 +156,21 @@ interface Serial3/3
  shutdown 
  serial restart-delay 0
 !         
+router ospf 1
+ router-id 3.3.3.3
+ network 10.10.10.0 0.0.0.255 area 0
+ network 10.12.10.0 0.0.0.255 area 0
+ network 10.13.10.0 0.0.0.255 area 0
+!         
 ip forward-protocol nd
 !         
 !         
 ip http server
 ip http secure-server
 ip ssh bulk-mode 131072
+!         
+ipv6 router ospf 1
+ router-id 3.3.3.3
 !         
 !         
 !         

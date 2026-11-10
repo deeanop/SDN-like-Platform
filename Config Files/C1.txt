@@ -1,5 +1,7 @@
 C1#show startup-config
-Using 1782 out of 10240 bytes
+Using 2387 out of 10240 bytes
+!
+! Last configuration change at 23:01:42 UTC Mon Nov 9 2026
 !
 version 17.12
 service timestamps debug datetime msec
@@ -20,8 +22,8 @@ no aaa new-model
 !
 !
 !
-!
-!
+!         
+!         
 !         
 !         
 !         
@@ -40,7 +42,16 @@ ipv6 cef
 multilink bundle-name authenticated
 !         
 !         
+crypto pki trustpoint TP-self-signed-2048006
+ enrollment selfsigned
+ subject-name cn=IOS-Self-Signed-Certificate-2048006
+ revocation-check none
+ rsakeypair TP-self-signed-2048006
+ hash sha256
 !         
+!         
+crypto pki certificate chain TP-self-signed-2048006
+ certificate self-signed 01 nvram:IOS-Self-Sig#1.cer
 !         
 !         
 memory free low-watermark processor 55011
@@ -73,15 +84,18 @@ spanning-tree mode rapid-pvst
 interface Ethernet0/0
  ip address 10.9.10.3 255.255.255.0
  ipv6 address 2001:DB8:D1:10::3/64
+ ipv6 ospf 1 area 0
 !         
 interface Ethernet0/1
  ip address 10.11.10.1 255.255.255.0
  ipv6 address 2001:DB8:C1:10::1/64
  ipv6 address 2001:DB8:CC:10::1/64
+ ipv6 ospf 1 area 0
 !         
 interface Ethernet0/2
  ip address 10.14.10.1 255.255.255.0
  ipv6 address 2001:DB8:C4:10::1/64
+ ipv6 ospf 1 area 0
 !         
 interface Ethernet0/3
  no ip address
@@ -143,12 +157,21 @@ interface Serial3/3
  shutdown 
  serial restart-delay 0
 !         
+router ospf 1
+ router-id 1.1.1.1
+ network 10.9.10.0 0.0.0.255 area 0
+ network 10.11.10.0 0.0.0.255 area 0
+ network 10.14.10.0 0.0.0.255 area 0
+!         
 ip forward-protocol nd
 !         
 !         
 ip http server
 ip http secure-server
 ip ssh bulk-mode 131072
+!         
+ipv6 router ospf 1
+ router-id 1.1.1.1
 !         
 !         
 !         
@@ -168,4 +191,4 @@ line vty 0 4
 !         
 !         
 !         
-end       
+end  
