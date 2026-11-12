@@ -1,5 +1,5 @@
 Edge#show startup-config
-Using 2182 out of 524288 bytes
+Using 2315 out of 524288 bytes
 !
 version 17.12
 service timestamps debug datetime msec
@@ -25,6 +25,7 @@ no aaa new-model
 !         
 !         
 !         
+ip domain name cisco.com
 ip cef    
 login on-success log
 ipv6 unicast-routing
@@ -58,6 +59,7 @@ memory free low-watermark processor 81225
 spanning-tree mode rapid-pvst
 !         
 !         
+username admin secret 9 $9$VjCXY2fxZPb15E$b.N3k3DsyV0r3YFwTtYLjlJOzwMr59nxfltKEQSk2Pk
 !         
 !         
 !         
@@ -179,10 +181,11 @@ line con 0
  logging synchronous
 line aux 0
 line vty 0 4
- login    
+ password cisco
+ login local
  transport input ssh
 !         
 !         
 !         
 !         
-end     
+end   

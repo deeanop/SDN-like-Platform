@@ -1,7 +1,7 @@
 Core-SW1#show startup-config
-Using 3303 out of 10240 bytes
+Using 3436 out of 10240 bytes
 !
-! Last configuration change at 22:41:42 UTC Wed Nov 11 2026
+! Last configuration change at 23:50:25 UTC Wed Nov 11 2026
 !
 version 17.12
 service timestamps debug datetime msec
@@ -29,6 +29,7 @@ no aaa new-model
 !         
 ip audit notify log
 ip audit po max-events 100
+ip domain name cisco.com
 ip cef    
 login on-success log
 ipv6 unicast-routing
@@ -62,6 +63,7 @@ spanning-tree mode rapid-pvst
 spanning-tree extend system-id
 spanning-tree vlan 10 priority 24576
 !         
+username admin secret 9 $9$I9eHpcB67vJDWE$Ofh0SvKzoMfYgEVTTvqUg6GY6uluCB5hXFK72GnVWxo
 !         
 vlan internal allocation policy ascending
 !         
@@ -193,8 +195,9 @@ line con 0
  logging synchronous
 line aux 0
 line vty 0 4
- login    
+ password cisco
+ login local
  transport input ssh
 !         
 !         
-end   
+end  

@@ -1,7 +1,7 @@
 Voice#show startup-config
-Using 2217 out of 10240 bytes
+Using 2351 out of 10240 bytes
 !
-! Last configuration change at 20:59:27 UTC Mon Nov 9 2026
+! Last configuration change at 00:02:45 UTC Thu Nov 12 2026
 !
 version 17.12
 service timestamps debug datetime msec
@@ -29,6 +29,7 @@ no aaa new-model
 !         
 ip audit notify log
 ip audit po max-events 100
+ip domain name cisco.com
 ip cef    
 login on-success log
 ipv6 unicast-routing
@@ -61,6 +62,7 @@ memory free low-watermark processor 54375
 spanning-tree mode rapid-pvst
 spanning-tree extend system-id
 !         
+username admin secret 9 $9$n5ktCCcMNdsMyk$7HCMr1nuAhYKDflX9WIe6fKDISCFKUGyUgEBeIriAgo
 !         
 vlan internal allocation policy ascending
 !         
@@ -148,7 +150,8 @@ line con 0
  logging synchronous
 line aux 0
 line vty 0 4
- login    
+ password cisco
+ login local
  transport input ssh
 !         
 !         

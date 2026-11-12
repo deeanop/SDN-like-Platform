@@ -1,7 +1,7 @@
-Office3B#show startup-config 
-Using 1851 out of 10240 bytes
+Office3B#show startup-config
+Using 1985 out of 10240 bytes
 !
-! Last configuration change at 20:49:03 UTC Mon Nov 9 2026
+! Last configuration change at 23:28:24 UTC Wed Nov 11 2026
 !
 version 17.12
 service timestamps debug datetime msec
@@ -29,6 +29,7 @@ no aaa new-model
 !         
 ip audit notify log
 ip audit po max-events 100
+ip domain name cisco.com
 ip cef    
 login on-success log
 ipv6 unicast-routing
@@ -61,6 +62,7 @@ memory free low-watermark processor 54375
 spanning-tree mode rapid-pvst
 spanning-tree extend system-id
 !         
+username admin secret 9 $9$Z3k0y/yVebvuzU$j0R1jGg0FCxQfCKaxH4Wm/PTjI/qLQy8UgmjXba48QE
 !         
 vlan internal allocation policy ascending
 !         
@@ -135,7 +137,8 @@ line con 0
  logging synchronous
 line aux 0
 line vty 0 4
- login    
+ password cisco
+ login local
  transport input ssh
 !         
 !         

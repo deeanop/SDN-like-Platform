@@ -1,7 +1,7 @@
 SW5#show startup-config
-Using 2885 out of 10240 bytes
+Using 3019 out of 10240 bytes
 !
-! Last configuration change at 20:54:27 UTC Mon Nov 9 2026
+! Last configuration change at 23:38:33 UTC Wed Nov 11 2026
 !
 version 17.12
 service timestamps debug datetime msec
@@ -29,6 +29,7 @@ no aaa new-model
 !         
 ip audit notify log
 ip audit po max-events 100
+ip domain name cisco.com
 ip cef    
 login on-success log
 ipv6 unicast-routing
@@ -62,6 +63,7 @@ spanning-tree mode rapid-pvst
 spanning-tree extend system-id
 spanning-tree vlan 10 priority 28672
 !         
+username admin secret 9 $9$WKixXfBlIU0zY.$mtZPWdB2P0Zb2cjBfYLC4yq26BA0cNNAU1kJlYhkaVg
 !         
 vlan internal allocation policy ascending
 !         
@@ -172,8 +174,9 @@ line con 0
  logging synchronous
 line aux 0
 line vty 0 4
- login    
+ password cisco
+ login local
  transport input ssh
 !         
 !         
-end
+end    

@@ -1,5 +1,5 @@
 C4#show startup-config
-Using 2189 out of 10240 bytes
+Using 2322 out of 524288 bytes
 !
 version 17.12
 service timestamps debug datetime msec
@@ -25,6 +25,7 @@ no aaa new-model
 !         
 !         
 !         
+ip domain name cisco.com
 ip cef    
 login on-success log
 ipv6 unicast-routing
@@ -58,6 +59,7 @@ memory free low-watermark processor 55011
 spanning-tree mode rapid-pvst
 !         
 !         
+username admin secret 9 $9$1rQYVHAtOWsDFU$ny1jGiRrQwGBHDPNGpW3wDJ15Dtf5PkNZ.M2C00mvug
 !         
 !         
 !         
@@ -180,10 +182,11 @@ line con 0
  logging synchronous
 line aux 0
 line vty 0 4
- login    
+ password cisco
+ login local
  transport input ssh
 !         
 !         
 !         
 !         
-end       
+end  

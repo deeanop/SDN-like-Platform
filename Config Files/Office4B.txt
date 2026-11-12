@@ -1,7 +1,7 @@
 Office4B#show startup-config
-Using 1853 out of 10240 bytes
+Using 1987 out of 10240 bytes
 !
-! Last configuration change at 20:50:37 UTC Mon Nov 9 2026
+! Last configuration change at 23:35:30 UTC Wed Nov 11 2026
 !
 version 17.12
 service timestamps debug datetime msec
@@ -29,6 +29,7 @@ no aaa new-model
 !         
 ip audit notify log
 ip audit po max-events 100
+ip domain name cisco.com
 ip cef    
 login on-success log
 ipv6 unicast-routing
@@ -61,6 +62,7 @@ memory free low-watermark processor 54375
 spanning-tree mode rapid-pvst
 spanning-tree extend system-id
 !         
+username admin secret 9 $9$p6eiXBmaSYBA8.$ogYTHAbwaN42I1H6/vCo2z/0wByeSzLZu9Fa6da38xs
 !         
 vlan internal allocation policy ascending
 !         
@@ -135,8 +137,9 @@ line con 0
  logging synchronous
 line aux 0
 line vty 0 4
- login    
+ password cisco
+ login local
  transport input ssh
 !         
 !         
-end    
+end   
