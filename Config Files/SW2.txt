@@ -1,7 +1,42 @@
+SW2(config-if)#exit
+SW2(config)#ip domain name cisco.com
+SW2(config)#username admin secret class
+2048config)#crypto key geate rsa m
+The name for the keys will be: SW2.cisco.com
+
+% The key modulus size is 2048 bits
+% Generating 2048 bit RSA keys, keys will be non-exportable...
+*Nov 12 01:11:53.500: %PNP-6-PNP_DISCOVERY_STOPPED: PnP Discovery stopped (Config Wizard)
+[OK] (elapsed time was 1 seconds)
+
+SW2(config)#l
+*Nov 12 01:11:54.892: %SSH-5-ENABLED: SSH 1.99 has been enabledine vty 0 4
+SW2(config-line)#
+SW2#
+*Nov 12 01:12:02.805: %SYS-5-CONFIG_I: Configured from console by consoleconf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+SW2(config)#line vty 0 ?
+  <1-1500>  Last Line number
+  <cr>
+
+SW2(config)#line vty 0 1500
+SW2(config-line)#password cisco
+SW2(config-line)#login local
+SW2(config-line)#transport input ssh
+SW2(config-line)#do write
+Building configuration...
+Compressed configuration from 4091 bytes to 2122 bytes[OK]
+SW2(config-line)#
+*Nov 12 01:12:30.495: %GRUB-5-CONFIG_WRITING: GRUB configuration is being updated on disk. Please wait...
+*Nov 12 01:12:31.361: %GRUB-5-CONFIG_WRITTEN: GRUB configuration was written to disk successfully.
+SW2(config-line)#
+SW2(config-line)#
+SW2#show 
+*Nov 12 01:12:38.424: %SYS-5-CONFIG_I: Configured from console by consolestartup-
 SW2#show startup-config
-Using 2235 out of 262144 bytes, uncompressed size = 4455 bytes
+Using 2122 out of 262144 bytes, uncompressed size = 4091 bytes
 !
-! Last configuration change at 19:18:34 UTC Thu Nov 5 2026
+! Last configuration change at 01:12:02 UTC Thu Nov 12 2026
 !
 version 15.2
 service timestamps debug datetime msec
@@ -16,15 +51,17 @@ boot-end-marker
 !
 !
 !
+username admin secret 5 $1$E6oV$Qg7TRUJU.ZYdt02Dr7Mr80
 no aaa new-model
 !
 !
 !
 !
-!
 !         
 !         
 !         
+!         
+ip domain-name cisco.com
 ip cef    
 ipv6 unicast-routing
 ipv6 cef  
@@ -78,7 +115,6 @@ interface GigabitEthernet0/0
 interface GigabitEthernet0/1
  switchport trunk allowed vlan 10
  switchport trunk encapsulation dot1q
- --More-- 
  switchport mode trunk
  negotiation auto
  channel-group 8 mode active
@@ -140,7 +176,7 @@ ip http server
 !         
 ip ssh server algorithm encryption aes128-ctr aes192-ctr aes256-ctr
 ip ssh client algorithm encryption aes128-ctr aes192-ctr aes256-ctr
- --More-         
+!         
 !         
 !         
 !         
@@ -148,36 +184,35 @@ ip ssh client algorithm encryption aes128-ctr aes192-ctr aes256-ctr
 !         
 control-plane
 !         
-banner exec ^C
+banner exec ^CC
 IOSv - Cisco Systems Confidential -
           
 Supplemental End User License Restrictions
           
-This IOSv software is provided AS-IS without warranty of any kind. Under no circumstances may this software be used separate from the Cisco Modeling Labs Software that this software was provided with, or deployed or used as part of a production environment.
+This IOSv software is provided AS-IS without warranty of any kind. Under no circumstances may this software be used separate from the Cisco Modeling Labs Software that this software was provided with, or deployed or used as part of a production environme
           
 By using the software, you agree to abide by the terms and conditions of the Cisco End User License Agreement at http://www.cisco.com/go/eula. Unauthorized use or distribution of this software is expressly prohibited.
 ^C        
-banner incoming ^C
+banner incoming ^CC
 IOSv - Cisco Systems Confidential -
           
 Supplemental End User License Restrictions
           
-This IOSv software is provided AS-IS without warranty of any kind. Under no circumstances may this software be used separate from the Cisco Modeling Labs Software that this software was provided with, or deployed or used as part of a production environment.
+This IOSv software is provided AS-IS without warranty of any kind. Under no circumstances may this software be used separate from the Cisco Modeling Labs Software that this software was provided with, or deployed or used as part of a production environme
           
 By using the software, you agree to abide by the terms and conditions of the Cisco End User License Agreement at http://www.cisco.com/go/eula. Unauthorized use or distribution of this 
 ^C        
-banner login ^C
-IOSv - Cisco Systems Confidential -
-          
-Supplemental End User License Restrictions
-          
-This IOSv software is provided AS-IS without warranty of any kind. Under no circumstances may this software be used separate from the Cisco Modeling Labs Software that this software was provided with, or deployed or used as part of a production environment.
-          
-By using the software, you agree to abide by the terms and conditions of the Cisco End User License Agreement at http://www.cisco.com/go/eula. Unauthorized use or distribution of this software is expressly prohibited.        
 !         
 line con 0
 line aux 0
 line vty 0 4
+ password cisco
+ login local
+ transport input ssh
+line vty 5 1500
+ password cisco
+ login local
+ transport input ssh
 !         
 !         
-end   
+end  
