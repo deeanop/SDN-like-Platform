@@ -1,7 +1,5 @@
 R1#show startup-config
-Using 2305 out of 10240 bytes
-!
-! Last configuration change at 19:16:45 UTC Mon Nov 9 2026
+Using 2313 out of 10240 bytes
 !
 version 17.12
 service timestamps debug datetime msec
@@ -22,8 +20,8 @@ no aaa new-model
 !
 !
 !
-!         
-!         
+!
+!
 !         
 !         
 !         
@@ -169,8 +167,10 @@ ip forward-protocol nd
 !         
 ip http server
 ip http secure-server
+ip route 0.0.0.0 0.0.0.0 10.9.10.3
 ip ssh bulk-mode 131072
 !         
+ipv6 route ::/0 2001:DB8:D1:10::3
 !         
 !         
 !         
@@ -189,4 +189,4 @@ line vty 0 4
 !         
 !         
 !         
-end      
+end  

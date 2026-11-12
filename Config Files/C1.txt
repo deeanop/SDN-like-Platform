@@ -1,7 +1,7 @@
 C1#show startup-config
-Using 2387 out of 10240 bytes
+Using 2622 out of 10240 bytes
 !
-! Last configuration change at 23:01:42 UTC Mon Nov 9 2026
+! Last configuration change at 21:57:58 UTC Wed Nov 11 2026
 !
 version 17.12
 service timestamps debug datetime msec
@@ -159,6 +159,7 @@ interface Serial3/3
 !         
 router ospf 1
  router-id 1.1.1.1
+ redistribute static
  network 10.9.10.0 0.0.0.255 area 0
  network 10.11.10.0 0.0.0.255 area 0
  network 10.14.10.0 0.0.0.255 area 0
@@ -168,10 +169,15 @@ ip forward-protocol nd
 !         
 ip http server
 ip http secure-server
+ip route 172.16.10.0 255.255.255.0 10.11.10.2
+ip route 192.168.10.0 255.255.255.0 10.9.10.1
 ip ssh bulk-mode 131072
 !         
+ipv6 route 2001:DB8:100:10::/64 2001:DB8:D1:10::1
+ipv6 route 2001:DB8:200:10::/64 2001:DB8:C1:10::2
 ipv6 router ospf 1
  router-id 1.1.1.1
+ redistribute static
 !         
 !         
 !         

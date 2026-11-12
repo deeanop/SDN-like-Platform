@@ -1,7 +1,5 @@
 Edge#show startup-config
-Using 2346 out of 524288 bytes
-!
-! Last configuration change at 23:29:52 UTC Mon Nov 9 2026
+Using 2182 out of 524288 bytes
 !
 version 17.12
 service timestamps debug datetime msec
@@ -22,8 +20,8 @@ no aaa new-model
 !
 !
 !
-!         
-!         
+!
+!
 !         
 !         
 !         
@@ -89,12 +87,10 @@ interface Ethernet0/0
 interface Ethernet0/1
  ip address 10.17.80.1 255.255.255.0
  ipv6 address 2001:DB8:A1:80::1/64
- ipv6 eigrp 100
 !         
 interface Ethernet0/2
  ip address 10.16.70.1 255.255.255.0
- ipv6 address 2001:DB8:A0:70::1/64
- ipv6 eigrp 100
+ ipv6 address 2001:DB8:A0:80::1/64
 !         
 interface Ethernet0/3
  no ip address
@@ -158,9 +154,7 @@ interface Serial3/3
 !         
 !         
 router eigrp 100
- network 10.16.70.0 0.0.0.255
- network 10.17.80.0 0.0.0.255
- network 172.17.10.0 0.0.0.255
+ network 172.17.0.0
  eigrp router-id 3.3.3.3
 !         
 ip forward-protocol nd
@@ -191,4 +185,4 @@ line vty 0 4
 !         
 !         
 !         
-end   
+end     
