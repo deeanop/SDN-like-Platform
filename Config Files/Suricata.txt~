@@ -1,0 +1,35 @@
+;pressing e in GRUB menu for kernel boot options editing and modifying starting line (vmlinuz) by adding init=/bin/bash
+mount -o remount,rw / ;remounting the file system with write permissions in vncviewer
+passwd root ;entering the new password for root user
+sync
+exec /sbin/init ;writing the modifications on disk and starting the VM
+ip link show ;viewing the physical and virtual interfaces
+ip link set ens5 up ;powering on the interface towards NAT
+dhclient ens5 ;requesting an IP address through DHCP
+apt update && apt install -y suricata bridge-utils ethtool ;installing Suricata
+ip link set ens3 up
+ip link set ens4 up ;powering on the discovered interfaces
+ip link set ens3 promisc on
+ip link set ens4 promisc on ;placing the interfaces in promiscuous mode
+ethtool -K ens3 gro off lro off tso off gso off
+ethtool -K ens4 gro off lro off tso off gso off ;stopping the offloading for correct inspection of traffic
+nano /etc/suricata/suricata.yaml ;editing the suricata.yaml file
+;searching the af-packet section and adding the following structure:
+	   af-packet:
+		- interface: ens3
+		cluster-id: 99
+		cluster-type: cluster_flow
+		defrag: yes
+		copy-mode: ips
+		copy-iface: ens4
+		- interface ens4
+		cluster-id: 98
+		cluster-type: cluster_flow
+		defrag: yes
+		copy-mode: ips
+		copy-iface: ens3
+suricata -T -c /etc/suricata/suricata.yaml ;verifying the sintax of config file
+systemctl restart suricata
+systemctl enable suricata ;starting the Suricata service
+
+
