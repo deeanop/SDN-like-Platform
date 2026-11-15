@@ -1,42 +1,7 @@
-SW2(config-if)#exit
-SW2(config)#ip domain name cisco.com
-SW2(config)#username admin secret class
-2048config)#crypto key geate rsa m
-The name for the keys will be: SW2.cisco.com
-
-% The key modulus size is 2048 bits
-% Generating 2048 bit RSA keys, keys will be non-exportable...
-*Nov 12 01:11:53.500: %PNP-6-PNP_DISCOVERY_STOPPED: PnP Discovery stopped (Config Wizard)
-[OK] (elapsed time was 1 seconds)
-
-SW2(config)#l
-*Nov 12 01:11:54.892: %SSH-5-ENABLED: SSH 1.99 has been enabledine vty 0 4
-SW2(config-line)#
-SW2#
-*Nov 12 01:12:02.805: %SYS-5-CONFIG_I: Configured from console by consoleconf t
-Enter configuration commands, one per line.  End with CNTL/Z.
-SW2(config)#line vty 0 ?
-  <1-1500>  Last Line number
-  <cr>
-
-SW2(config)#line vty 0 1500
-SW2(config-line)#password cisco
-SW2(config-line)#login local
-SW2(config-line)#transport input ssh
-SW2(config-line)#do write
-Building configuration...
-Compressed configuration from 4091 bytes to 2122 bytes[OK]
-SW2(config-line)#
-*Nov 12 01:12:30.495: %GRUB-5-CONFIG_WRITING: GRUB configuration is being updated on disk. Please wait...
-*Nov 12 01:12:31.361: %GRUB-5-CONFIG_WRITTEN: GRUB configuration was written to disk successfully.
-SW2(config-line)#
-SW2(config-line)#
-SW2#show 
-*Nov 12 01:12:38.424: %SYS-5-CONFIG_I: Configured from console by consolestartup-
 SW2#show startup-config
-Using 2122 out of 262144 bytes, uncompressed size = 4091 bytes
+Using 2381 out of 262144 bytes, uncompressed size = 4682 bytes
 !
-! Last configuration change at 01:12:02 UTC Thu Nov 12 2026
+! Last configuration change at 14:31:32 UTC Sun Nov 15 2026
 !
 version 15.2
 service timestamps debug datetime msec
@@ -168,6 +133,7 @@ interface Vlan1
 interface Vlan10
  ip address 172.16.10.17 255.255.255.0
  ipv6 address 2001:DB8:200:10::17/64
+ ipv6 enable
 !         
 ip default-gateway 172.16.10.3
 ip forward-protocol nd
@@ -202,6 +168,15 @@ This IOSv software is provided AS-IS without warranty of any kind. Under no circ
           
 By using the software, you agree to abide by the terms and conditions of the Cisco End User License Agreement at http://www.cisco.com/go/eula. Unauthorized use or distribution of this 
 ^C        
+banner login ^C
+IOSv - Cisco Systems Confidential -
+          
+Supplemental End User License Restrictions
+          
+This IOSv software is provided AS-IS without warranty of any kind. Under no circumstances may this software be used separate from the Cisco Modeling Labs Software that this software was provided with, or deployed or used as part of a production environment.
+          
+By using the software, you agree to abide by the terms and conditions of the Cisco End User License Agreement at http://www.cisco.com/go/eula. Unauthorized use or distribution of this software is expressly prohibited.
+^C        
 !         
 line con 0
 line aux 0
@@ -215,4 +190,4 @@ line vty 5 1500
  transport input ssh
 !         
 !         
-end  
+end   
