@@ -1,7 +1,7 @@
 Core-SW1#show startup-config
-Using 3436 out of 10240 bytes
+Using 3646 out of 524288 bytes
 !
-! Last configuration change at 23:50:25 UTC Wed Nov 11 2026
+! Last configuration change at 14:30:34 UTC Sun Nov 15 2026
 !
 version 17.12
 service timestamps debug datetime msec
@@ -88,8 +88,16 @@ interface Ethernet0/0
  ipv6 eigrp 100
 !         
 interface Ethernet0/1
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 10
+ switchport mode trunk
+ channel-group 7 mode passive
 !         
 interface Ethernet0/2
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 10
+ switchport mode trunk
+ channel-group 7 mode passive
 !         
 interface Ethernet0/3
  switchport trunk encapsulation dot1q
@@ -107,13 +115,13 @@ interface Ethernet1/1
  switchport trunk encapsulation dot1q
  switchport trunk allowed vlan 10
  switchport mode trunk
- channel-group 7 mode passive
+ shutdown 
 !         
 interface Ethernet1/2
  switchport trunk encapsulation dot1q
  switchport trunk allowed vlan 10
  switchport mode trunk
- channel-group 7 mode passive
+ shutdown 
 !         
 interface Ethernet1/3
  no switchport
