@@ -1,7 +1,7 @@
-Core-SW2#show startup-config
-Using 2833 out of 10240 bytes
+Core-SW2#show startup-config       
+Using 2994 out of 524288 bytes
 !
-! Last configuration change at 23:52:34 UTC Wed Nov 11 2026
+! Last configuration change at 16:18:52 UTC Tue Nov 17 2026
 !
 version 17.12
 service timestamps debug datetime msec
@@ -84,6 +84,11 @@ interface Port-channel8
 interface Ethernet0/0
  no switchport
  ip address 10.10.10.2 255.255.255.0
+ standby version 2
+ standby 10 ip 10.10.10.5
+ standby 10 priority 110
+ standby 11 ipv6 2001:DB8:D2:10::5/64
+ standby 11 priority 110
  ipv6 address 2001:DB8:D2:10::2/64
 !         
 interface Ethernet0/1
@@ -141,6 +146,7 @@ interface Vlan10
  standby version 2
  standby 10 ip 172.16.10.3
  standby 10 priority 110
+ standby 11 ipv6 autoconfig
  standby 11 ipv6 2001:DB8:200:10::3/64
  standby 11 priority 110
  ipv6 address 2001:DB8:200:10::2/64

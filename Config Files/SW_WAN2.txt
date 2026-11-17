@@ -1,7 +1,7 @@
 SW-WAN2#show startup-config
-Using 1716 out of 10240 bytes
+Using 1869 out of 524288 bytes
 !
-! Last configuration change at 23:49:10 UTC Wed Nov 11 2026
+! Last configuration change at 15:34:21 UTC Tue Nov 17 2026
 !
 version 17.12
 service timestamps debug datetime msec
@@ -71,10 +71,16 @@ vlan internal allocation policy ascending
 !         
 !         
 interface Ethernet0/0
+ switchport access vlan 10
+ switchport mode access
 !         
 interface Ethernet0/1
+ switchport access vlan 10
+ switchport mode access
 !         
 interface Ethernet0/2
+ switchport access vlan 10
+ switchport mode access
 !         
 interface Ethernet0/3
 !         

@@ -1,5 +1,7 @@
-C3#show startup-config
-Using 2661 out of 524288 bytes
+C3#show startup-config      
+Using 2723 out of 524288 bytes
+!
+! Last configuration change at 16:29:05 UTC Tue Nov 17 2026
 !
 version 17.12
 service timestamps debug datetime msec
@@ -20,8 +22,8 @@ no aaa new-model
 !
 !
 !
-!
-!
+!         
+!         
 !         
 !         
 !         
@@ -168,12 +170,12 @@ ip forward-protocol nd
 !         
 ip http server
 ip http secure-server
-ip route 172.16.10.0 255.255.255.0 10.10.10.1
+ip route 172.16.10.0 255.255.255.0 10.10.10.5
 ip route 192.168.10.0 255.255.255.0 10.13.10.2
 ip ssh bulk-mode 131072
 !         
 ipv6 route 2001:DB8:100:10::/64 2001:DB8:C3:10::2
-ipv6 route 2001:DB8:200:10::/64 2001:DB8:D1:10::1
+ipv6 route 2001:DB8:200:10::/64 2001:DB8:D2:10::5
 ipv6 router ospf 1
  router-id 3.3.3.3
  redistribute static
@@ -197,4 +199,4 @@ line vty 0 4
 !         
 !         
 !         
-end 
+end   

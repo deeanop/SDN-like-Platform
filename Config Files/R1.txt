@@ -1,5 +1,5 @@
 R1#show startup-config
-Using 2446 out of 10240 bytes
+Using 2618 out of 524288 bytes
 !
 version 17.12
 service timestamps debug datetime msec
@@ -98,6 +98,13 @@ interface Ethernet0/0.10
 !         
 interface Ethernet0/1
  ip address 10.9.10.1 255.255.255.0
+ standby version 2
+ standby 10 ip 10.9.10.5
+ standby 10 priority 120
+ standby 10 preempt
+ standby 11 ipv6 2001:DB8:D1:10::5/64
+ standby 11 priority 120
+ standby 11 preempt
  ipv6 address 2001:DB8:D1:10::1/64
 !         
 interface Ethernet0/2
@@ -192,4 +199,4 @@ line vty 0 4
 !         
 !         
 !         
-end 
+end  

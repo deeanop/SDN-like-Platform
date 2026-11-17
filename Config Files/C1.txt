@@ -1,5 +1,5 @@
 C1#show startup-config
-Using 2693 out of 524288 bytes
+Using 2658 out of 524288 bytes
 !
 version 17.12
 service timestamps debug datetime msec
@@ -89,7 +89,6 @@ interface Ethernet0/0
 interface Ethernet0/1
  ip address 10.11.10.1 255.255.255.0
  ipv6 address 2001:DB8:C1:10::1/64
- ipv6 address 2001:DB8:CC:10::1/64
  ipv6 ospf 1 area 0
 !         
 interface Ethernet0/2
@@ -170,10 +169,10 @@ ip forward-protocol nd
 ip http server
 ip http secure-server
 ip route 172.16.10.0 255.255.255.0 10.11.10.2
-ip route 192.168.10.0 255.255.255.0 10.9.10.1
+ip route 192.168.10.0 255.255.255.0 10.9.10.5
 ip ssh bulk-mode 131072
 !         
-ipv6 route 2001:DB8:100:10::/64 2001:DB8:D1:10::1
+ipv6 route 2001:DB8:100:10::/64 2001:DB8:D1:10::5
 ipv6 route 2001:DB8:200:10::/64 2001:DB8:C1:10::2
 ipv6 router ospf 1
  router-id 1.1.1.1

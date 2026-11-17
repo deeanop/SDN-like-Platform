@@ -1,7 +1,7 @@
 Core-SW1#show startup-config
-Using 3646 out of 524288 bytes
+Using 3847 out of 524288 bytes
 !
-! Last configuration change at 14:30:34 UTC Sun Nov 15 2026
+! Last configuration change at 16:15:53 UTC Tue Nov 17 2026
 !
 version 17.12
 service timestamps debug datetime msec
@@ -84,6 +84,13 @@ interface Port-channel7
 interface Ethernet0/0
  no switchport
  ip address 10.10.10.1 255.255.255.0
+ standby version 2
+ standby 10 ip 10.10.10.5
+ standby 10 priority 120
+ standby 10 preempt
+ standby 11 ipv6 2001:DB8:D2:10::5/64
+ standby 11 priority 120
+ standby 11 preempt
  ipv6 address 2001:DB8:D1:10::1/64
  ipv6 eigrp 100
 !         
@@ -157,6 +164,7 @@ interface Vlan10
  standby 10 ip 172.16.10.3
  standby 10 priority 120
  standby 10 preempt
+ standby 11 ipv6 autoconfig
  standby 11 ipv6 2001:DB8:200:10::3/64
  standby 11 priority 120
  standby 11 preempt
@@ -208,4 +216,4 @@ line vty 0 4
  transport input ssh
 !         
 !         
-end  
+end     
