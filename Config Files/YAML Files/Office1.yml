@@ -26,6 +26,7 @@ vlans:
     name: Unused
   - id: 100
     name: Native
+ipv6_unicast_routing: true
 interfaces:
   trunk:
     - name: Ethernet0/0
