@@ -1,0 +1,96 @@
+device:
+  hostname: SW5
+  device_type: cisco_ios
+  management_ipv4: 192.168.10.19
+  management_ipv6: 2001:DB8:100:10::19
+  username: admin
+management:
+  vlan: 10
+  ipv4:
+    address: 192.168.10.19
+    mask: 255.255.255.0
+    gateway: 192.168.10.3
+  ipv6:
+    address: 2001:DB8:100:10::19
+    prefix: 64
+vlans:
+  - id: 10
+    name: Management
+  - id: 20
+    name: Customer
+  - id: 30
+    name: Voice
+  - id: 40
+    name: Printers
+  - id: 90
+    name: Unused
+  - id: 100
+    name: Native
+interfaces:
+  trunk:
+    - name: Ethernet1/2
+    - allowed_vlans: "10,20,30,40,100"
+    - native_vlan: 100
+etherchannels:
+  - group: 6
+    protocol: pagp
+    mode: auto
+    interfaces:
+      - Ethernet0/2
+      - Ethernet0/3
+    port_channel: Port-channel6
+    switchport_mode: trunk
+    allowed_vlans: "10,20,30,40,100"
+    native_vlan: 100
+  - group: 8
+    protocol: pagp
+    mode: auto
+    interfaces:
+      - Ethernet0/0
+      - Ethernet0/1
+    port_channel: Port-channel8
+    switchport_mode: trunk
+    allowed_vlans: "10,20,30,40,100"
+    native_vlan: 100
+  - group: 9
+    protocol: pagp
+    mode: auto
+    interfaces:
+      - Ethernet1/0
+      - Ethernet1/1
+    port_channel: Port-channel9
+    switchport_mode: trunk
+    allowed_vlans: "10,20,30,40,100"
+    native_vlan: 100
+unused_ports:
+  range: "Ethernet1/3 - 3/3"
+  vlan: 90
+  shutdown: true
+spanning_tree:
+  mode: rapid-pvst
+  root:
+    - role: primary
+      vlans: "20,40"
+    - role: secondary
+      vlans: "10,30"
+security:
+  service_password_encryption: true
+  banner: "Unauthorized access prohibited"
+  console:
+    exec_timeout:
+      minutes: 5
+      seconds: 0
+  vty:
+    exec_timeouts:
+      minutes: 5
+      seconds: 0
+  login_block:
+    attempts: 3
+    within_seconds: 60
+    block_seconds: 120
+time:
+  timezone: UTC
+  offset_hours: 2
+  ntp_server_ipv4: 172.16.50.24
+  ntp_server_ipv6: 2001:DB8:200:50::24
+  clock_source: ntp
