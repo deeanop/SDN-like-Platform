@@ -1,6 +1,8 @@
 device:
   hostname: C1
   device_type: cisco_ios
+  management_ipv4: 10.15.10.1
+  management_ipv6: 2001:DB8:C5:10::1
   username: admin
 ipv6_unicast_routing: true
 interfaces:
