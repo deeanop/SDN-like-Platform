@@ -26,7 +26,7 @@ static_routes:
       next_hop: 10.9.10.5
     - destination: 192.168.20.0
       mask: 255.255.255.0
-      netx_hop: 10.9.10.5
+      next_hop: 10.9.10.5
     - destination: 192.168.30.0
       mask: 255.255.255.0
       next_hop: 10.9.10.5
@@ -53,7 +53,7 @@ static_routes:
     - destination: 2001:DB8:100:30::/64
       next_hop: 2001:DB8:D1:10::5
     - destination: 2001:DB8:100:40::/64
-      netx_hop: 2001:DB8:D1:10::5
+      next_hop: 2001:DB8:D1:10::5
     - destination: 2001:DB8:200:10::/64
       next_hop: 2001:DB8:C1:10::2
     - destination: 2001:DB8:200:20::/64
