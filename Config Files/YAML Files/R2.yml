@@ -16,10 +16,10 @@ interfaces:
       prefix: 64
   - name: Ethernet0/0
     description: "From Customer Office"
-    enabled: true
+    shutdown: false
   - name: Ethernet0/1
     description: "Towards WAN1"
-    enabled: true
+    shutdown: false
     ipv4:
       address: 10.9.10.2
       mask: 255.255.255.0
