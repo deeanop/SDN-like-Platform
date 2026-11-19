@@ -49,13 +49,7 @@ static_routes:
     - destination: 192.168.10.0
       mask: 255.255.255.0
       next_hop: 10.12.10.1
-    - destination: 192.168.20.0
-      mask: 255.255.255.0
-      next_hop: 10.13.10.2
-    - destination: 192.168.30.0
-      mask: 255.255.255.0
-      next_hop: 10.12.10.1
-    - destination: 192.168.40.0
+    - destination: 192.168.50.0
       mask: 255.255.255.0
       next_hop: 10.13.10.2
   ipv6:
@@ -69,11 +63,7 @@ static_routes:
       next_hop: 2001:DB8:D1:10::5
     - destination: 2001:DB8:100:10::/64
       next_hop: 2001:DB8:C2:10::1
-    - destination: 2001:DB8:100:20::/64
-      next_hop: 2001:DB8:C3:10::2
-    - destination: 2001:DB8:100:30::/64
-      next_hop: 2001:DB8:C2:10::1
-    - destination: 2001:DB8:100:40::/64
+    - destination: 2001:DB8:100:50::/64
       next_hop: 2001:DB8:C3:10::2
 security:
   service_password_encryption: true
