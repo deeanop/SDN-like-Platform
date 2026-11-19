@@ -34,7 +34,7 @@ etherchannels:
     interfaces:
       - Ethernet0/0
       - Ethernet0/1
-    port-channel: Port-channel3
+    port_channel: Port-channel3
     switchport_mode: trunk
     allowed_vlans: "10,20,30,40,100"
     native_vlan: 100
@@ -44,7 +44,7 @@ etherchannels:
     interfaces:
       - Ethernet0/2
       - Ethernet0/3
-    port-channel: Port-channel4
+    port_channel: Port-channel4
     switchport_mode: trunk
     allowed_vlans: "10,20,30,40,100"
     native_vlan: 100
@@ -54,7 +54,7 @@ etherchannels:
     interfaces:
       - Ethernet1/0
       - Ethernet1/1
-    port-channel: Port-channel8
+    port_channel: Port-channel8
     switchport_mode: trunk
     allowed_vlans: "10,20,30,40,100"
     native_vlan: 100
