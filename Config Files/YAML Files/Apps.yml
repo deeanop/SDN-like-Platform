@@ -1,0 +1,70 @@
+device:
+  hostname: Apps
+  device_type: cisco_ios
+  management_ipv4: 172.16.10.14
+  management_ipv6: 2001:DB8:100:10::14
+  username: admin
+management:
+  vlan: 10
+  ipv4:
+    address: 172.16.10.14
+    mask: 255.255.255.0
+    gateway: 172.16.10.3
+  ipv6:
+    address: 2001:DB8:100:10::14
+    prefix: 64
+vlans:
+  - id: 10
+    name: Management
+  - id: 50
+    name: Servers
+  - id: 90
+    name: Unused
+  - id: 100
+    name: Native
+ipv6_unicast_routing: true
+interfaces:
+  trunk:
+    - name: Ethernet0/0
+      allowed_vlans: "10,50,100"
+      native_vlan: 100
+    - name: Ethernet0/1
+      allowed_vlans: "10,50,100"
+      native_vlan: 100
+etherchannels:
+  - group: 3
+    protocol: lacp
+    mode: active
+    interfaces:
+      - Ethernet0/2
+      - Ethernet0/3
+    port_channel: Port-channel3
+    allowed_vlans: "10,50,100"
+    native_vlan: 100
+unused_ports:
+  range: "Ethernet1/0 - 3/3"
+  vlan: 90
+  shutdown: true
+spanning_tree:
+  mode: rapid-pvst
+security:
+  service_password_encryption: true
+  banner: "Unauthorized access prohibited"
+  console:
+    exec_timeout:
+      minutes: 5
+      seconds: 0
+  vty:
+    exec_timeout:
+      minutes: 5
+      seconds: 0
+  login_block:
+    attempts: 3
+    within_seconds: 60
+    block_seconds: 120
+time:
+  timezone: UTC
+  offset_hours: 2
+  ntp_server_ipv4: 172.16.50.24
+  ntp_server_ipv6: 2001:DB8:200:50::24
+  clock_source: ntp
