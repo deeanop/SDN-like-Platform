@@ -1,5 +1,6 @@
 device:
   hostname: SW-WAN1
+  device_type: cisco_ios
   management_ipv4: 10.9.10.4
   management_ipv6: 2001:DB8:D1:10::4
   username: admin
@@ -16,6 +17,7 @@ vlans:
     name: Management
   - id: 90
     name: Unused
+ipv6_unicast_routing: true
 unused_ports:
   range: "Ethernet0/3 - 3/3"
   switchport_mode: access
