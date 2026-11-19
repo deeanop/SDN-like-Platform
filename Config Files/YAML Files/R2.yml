@@ -6,11 +6,20 @@ device:
   username: admin
 ipv6_unicast_routing: true
 interfaces:
+  - name: "Loopback0"
+    description: "Loopback management interface"
+    ipv4: 
+      address: 10.9.10.7
+      mask: 255.255.255.0
+    ipv6:
+      address: 2001:DB8:D1:10::7
+      prefix: 64
   - name: Ethernet0/0
     description: "From Customer Office"
     enabled: true
   - name: Ethernet0/1
     description: "Towards WAN1"
+    enabled: true
     ipv4:
       address: 10.9.10.2
       mask: 255.255.255.0
