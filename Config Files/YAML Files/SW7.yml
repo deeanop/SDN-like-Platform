@@ -26,6 +26,7 @@ vlans:
     name: Unused
   - id: 100
     name: Native
+ipv6_unicast_routing: true
 etherchannels:
   - group: 1
     protocol: pagp
