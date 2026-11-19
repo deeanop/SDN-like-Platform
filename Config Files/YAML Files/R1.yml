@@ -110,11 +110,11 @@ subinterfaces:
           priority: 140
           preempt: false
 unused_ports:
-  ethernet:
+  Ethernet:
     - "Ethernet0/2"
     - "Ethernet1/0"
     - "Ethernet1/1"
-  serial:
+  Serial:
     - "Serial2/0"
     - "Serial2/1"
   shutdown: true
