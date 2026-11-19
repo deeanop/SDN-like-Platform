@@ -3,6 +3,16 @@ device:
   device_type: cisco_ios
   username: admin
 ipv6_unicast_routing: true
+interfaces:
+  loopbacks:
+    - name: "Loopback0"
+      description: "Loopback management interface"
+      ipv4:
+        address: 10.15.10.3
+        mask: 255.255.255.0
+      ipv6:
+        address: 2001:DB8:C5:10::3
+        prefix: 64
 unused_ports:
   Ethernet:
     - "Ethernet0/3"
