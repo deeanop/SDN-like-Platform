@@ -4,6 +4,13 @@ device:
   management_ipv4: 10.9.10.6
   management_ipv6: 2001:DB8:D1:10::6
   username: admin
+management:
+  ipv4: 
+    address: 10.9.10.6
+    mask: 255.255.255.0
+  ipv6:  
+    address: 2001:DB8:D1:10::6
+    prefix: 64
 ipv6_unicast_routing: true
 interfaces:
   - name: "Loopback0"
