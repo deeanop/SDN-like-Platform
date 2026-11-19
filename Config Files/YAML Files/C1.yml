@@ -19,6 +19,7 @@ unused_ports:
     - "Serial3/1"
     - "Serial3/2"
     - "Serial3/3"
+  shutdown: true
 static_routes:
   ipv4:
     - destination: 192.168.10.0
