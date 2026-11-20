@@ -4,18 +4,16 @@ device:
   management_ipv4: 172.16.10.14
   management_ipv6: 2001:DB8:100:10::14
   username: admin
-management:
-  vlan: 10
-  ipv4:
-    address: 172.16.10.14
-    mask: 255.255.255.0
-    gateway: 172.16.10.3
-  ipv6:
-    address: 2001:DB8:100:10::14
-    prefix: 64
 vlans:
   - id: 10
     name: Management
+    ipv4:
+      address: 172.16.10.14
+      mask: 255.255.255.0
+      gateway: 172.16.10.3
+    ipv6:
+      address: 2001:DB8:100:10::14
+      prefix: 64
   - id: 50
     name: Servers
   - id: 90
