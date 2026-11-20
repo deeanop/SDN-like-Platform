@@ -4,15 +4,6 @@ device:
   management_ipv4: 192.168.10.17
   management_ipv6: 2001:DB8:100:10::17
   username: admin
-management:
-  vlan: 10
-  ipv4:
-    address: 192.168.10.17
-    mask: 255.255.255.0
-    gateway: 192.168.10.3
-  ipv6:
-    address: 2001:DB8:100:10::17
-    prefix: 64
 vlans:
   - id: 10
     name: Management
@@ -27,6 +18,19 @@ vlans:
   - id: 100
     name: Native
 ipv6_unicast_routing: true
+interfaces:
+  SVIs:
+    - name: "vlan 10"
+      shutdown: false
+      ipv4:
+        address: 192.168.10.17
+        mask: 255.255.255.0
+        gateway: 192.168.10.3
+      ipv6:
+        address: 2001:DB8:100:10::17
+        prefix: 64
+    - name: "vlan 1"
+      shutdown: true
 etherchannels:
   - group: 3
     protocol: pagp
