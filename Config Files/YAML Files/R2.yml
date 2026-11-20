@@ -38,9 +38,11 @@ interfaces:
       groups:
         - id: 10
           ipv4: 10.9.10.5
+          ipv6: None
           priority: 110
           preempt: false
         - id: 11
+          ipv4: None
           ipv6: 2001:DB8:D1:10::5
           priority: 110
           preempt: false
@@ -59,9 +61,11 @@ subinterfaces:
       groups:
         - id: 10
           ipv4: 192.168.10.3
+          ipv6: None
           priority: 110
           preempt: false
         - id: 11
+          ipv4: None
           ipv6: 2001:DB8:100:10::3
           priority: 110
           preempt: false
@@ -79,9 +83,11 @@ subinterfaces:
       groups:
         - id: 20
           ipv4: 192.168.20.3
+          ipv6: None
           priority: 130
           preempt: true
         - id: 21
+          ipv4: None
           ipv6: 2001:DB8:100:20::3
           priority: 130
           preempt: true
@@ -99,9 +105,11 @@ subinterfaces:
       groups:
         - id: 30
           ipv4: 192.168.30.3
+          ipv6: None
           priority: 130
           preempt: false
         - id: 31
+          ipv4: None
           ipv6: 2001:DB8:100:30::3
           priority: 130
           preempt: false
@@ -119,9 +127,11 @@ subinterfaces:
       groups:
         - id: 40
           ipv4: 192.168.40.3
+          ipv6: None
           priority: 150
           preempt: true
         - id: 41
+          ipv4: None
           ipv6: 2001:DB8:100:40::3
           priority: 150
           preempt: true
