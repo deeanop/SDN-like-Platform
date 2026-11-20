@@ -7,13 +7,6 @@ device:
 vlans:
   - id: 10
     name: Management
-    ipv4:
-      address: 172.16.10.8
-      mask: 255.255.255.0
-      gateway: 172.16.10.3
-    ipv6: 
-      address: 2001:DB8:200:10::8
-      prefix: 64
   - id: 50
     name: Servers
   - id: 90
@@ -22,6 +15,18 @@ vlans:
     name: Native
 ipv6_unicast_routing: true
 interfaces:
+  SVIs:
+    - name: "vlan 10"
+      shutdown: false
+      ipv4:
+      address: 172.16.10.8
+        mask: 255.255.255.0
+        gateway: 172.16.10.3
+      ipv6: 
+        address: 2001:DB8:200:10::8
+        prefix: 64
+    - name: "vlan 1"
+      shutdown: true
   access:
     - name: Ethernet0/0
       vlan: 50
