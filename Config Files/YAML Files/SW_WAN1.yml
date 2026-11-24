@@ -22,10 +22,10 @@ interfaces:
         prefix: 64
     - name: "vlan 1"
       shutdown: true
-unused_ports:
-  range: "Ethernet0/3 - 3/3"
-  switchport_mode: access
-  shutdown: true
+  unused_interfaces:
+    range: "Ethernet0/3 - 3/3"
+    switchport_mode: access
+    shutdown: true
 security:
   service_password_encryption: true
   banner: "Unauthorized access prohibited"
