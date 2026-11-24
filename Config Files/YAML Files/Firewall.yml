@@ -46,7 +46,7 @@ interfaces:
         prefix: 64
   subinterfaces:
     - name: Ethernet0/2.10
-      dot1q_encapsulation: 10
+      vlan_id: 10
       ipv4:
         address: 172.18.10.1
         mask: 255.255.255.0
@@ -54,7 +54,7 @@ interfaces:
         address: 2001:DB8:400:10::1
         prefix: 64
     - name: Ethernet0/2.10
-      dot1q_encapsulation: 60
+      vlan_id: 60
       ipv4:
         address: 172.18.60.1
         mask: 255.255.255.0
