@@ -93,31 +93,31 @@ interfaces:
     - name: Ethernet2/0
       shutdown: false
       description: "Mirror"
-etherchannels:
-  - group: 7
-    protocol: lacp
-    mode: passive
-    interfaces:
-      - Ethernet0/1
-      - Ethernet0/2
-    port_channel: Port-channel7
-    switchport_mode: trunk
-    allowed_vlans: "10,50,100"
-    native_vlan: 100
-  - group: 5
-    protocol: lacp
-    mode: passive
-    interfaces:
-      - Ethernet0/3
-      - Ethernet1/0
-    port_channel: Port-channel5
-    switchport_mode: trunk
-    allowed_vlans: "10,50,100"
-    native_vlan: 100
-unused_ports:
-  range: "Ethernet1/1 - 1/2, 2/1 - 3/3"
-  vlan: 90
-  shutdown: true
+  etherchannels:
+    - group: 7
+      protocol: lacp
+      mode: passive
+      interfaces:
+        - Ethernet0/1
+        - Ethernet0/2
+      port_channel: Port-channel7
+      switchport_mode: trunk
+      allowed_vlans: "10,50,100"
+      native_vlan: 100
+    - group: 5
+      protocol: lacp
+      mode: passive
+      interfaces:
+        - Ethernet0/3
+        - Ethernet1/0
+      port_channel: Port-channel5
+      switchport_mode: trunk
+      allowed_vlans: "10,50,100"
+      native_vlan: 100
+  unused_interfaces:
+    range: "Ethernet1/1 - 1/2, 2/1 - 3/3"
+    vlan: 90
+    shutdown: true
 spanning_tree:
   mode: rapid-pvst
   root:
