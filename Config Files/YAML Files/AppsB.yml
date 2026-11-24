@@ -39,10 +39,10 @@ interfaces:
     - name: Ethernet0/3
       allowed_vlans: "10,50,100"
       native_vlan: 100
-unused_ports:
-  range: "Ethernet1/0 - 3/3"
-  vlan: 90
-  shutdown: true
+  unused_interfaces:
+    range: "Ethernet1/0 - 3/3"
+    vlan: 90
+    shutdown: true
 spanning_tree:
   mode: rapid-pvst
   access_ports:
