@@ -34,21 +34,21 @@ interfaces:
     - name: Ethernet0/1
       allowed_vlans: "10,50,100"
       native_vlan: 100
-etherchannels:
-  - group: 1
-    protocol: lacp
-    mode: active
-    interfaces:
-      - Ethernet0/2
-      - Ethernet0/3
-    port_channel: Port-channel1
-    switchport_mode: trunk
-    allowed_vlans: "10,50,100"
-    native_vlan: 100
-unused_ports:
-  range: "Ethernet1/0 - 3/3"
-  vlan: 90
-  shutdown: true
+  etherchannels:
+    - group: 1
+      protocol: lacp
+      mode: active
+      interfaces:
+        - Ethernet0/2
+        - Ethernet0/3
+      port_channel: Port-channel1
+      switchport_mode: trunk
+      allowed_vlans: "10,50,100"
+      native_vlan: 100
+  unused_interfaces:
+    range: "Ethernet1/0 - 3/3"
+    vlan: 90
+    shutdown: true
 spanning_tree:
   mode: rapid-pvst
 security:
