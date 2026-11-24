@@ -92,7 +92,7 @@ interface Ethernet0/1
 !         
 interface Ethernet0/2
  ip address 10.16.70.1 255.255.255.0
- ipv6 address 2001:DB8:A0:80::1/64
+ ipv6 address 2001:DB8:A0:70::1/64
 !         
 interface Ethernet0/3
  no ip address
