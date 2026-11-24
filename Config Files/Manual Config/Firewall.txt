@@ -93,12 +93,12 @@ interface Ethernet0/1
 !         
 interface Ethernet0/2
  no ip address
+ ipv6 eigrp 100
 !         
 interface Ethernet0/2.10
  encapsulation dot1Q 10
  ip address 172.18.10.1 255.255.255.0
  ipv6 address 2001:DB8:400:10::1/64
- ipv6 eigrp 100
 !         
 interface Ethernet0/3
  no ip address
