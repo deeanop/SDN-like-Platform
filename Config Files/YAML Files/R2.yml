@@ -4,146 +4,138 @@ device:
   management_ipv4: 10.9.10.7
   management_ipv6: 2001:DB8:D1:10::7
   username: admin
-management: 
-  ipv4: 
-    address: 10.9.10.7
-    mask: 255.255.255.0
-  ipv6:
-    address: 2001:DB8:D1:10::7
-    prefix: 64
 ipv6_unicast_routing: true
 interfaces:
-  - name: "Loopback0"
-    description: "Loopback management interface"
-    ipv4: 
-      address: 10.9.10.7
-      mask: 255.255.255.0
-    ipv6:
-      address: 2001:DB8:D1:10::7
-      prefix: 64
-  - name: Ethernet0/0
-    description: "From Customer Office"
-    shutdown: false
-  - name: Ethernet0/1
-    description: "Towards WAN1"
-    shutdown: false
-    ipv4:
-      address: 10.9.10.2
-      mask: 255.255.255.0
-    ipv6:
-      address: 2001:DB8:D1:10::2
-      prefix: 64
-    standby:
-      version: 2
-      groups:
-        - id: 10
-          ipv4: 10.9.10.5
-          ipv6: None
-          priority: 110
-          preempt: false
-        - id: 11
-          ipv4: None
-          ipv6: 2001:DB8:D1:10::5
-          priority: 110
-          preempt: false
-subinterfaces:
-  - name: Ethernet0/0.10
-    vlan_id: 10
-    description: Management
-    ipv4:
-      address: 192.168.10.2
-      mask: 255.255.255.0
-    ipv6:
-      address: 2001:DB8:100:10::2
-      prefix: 64
-    standby:
-      version: 2
-      groups:
-        - id: 10
-          ipv4: 192.168.10.3
-          ipv6: None
-          priority: 110
-          preempt: false
-        - id: 11
-          ipv4: None
-          ipv6: 2001:DB8:100:10::3
-          priority: 110
-          preempt: false
-  - name: Ethernet0/0.20
-    vlan_id: 20
-    description: Customer
-    ipv4:
-      address: 192.168.20.2
-      mask: 255.255.255.0
-    ipv6:
-      address: 2001:DB8:100:20::2
-      prefix: 64
-    standby:
-      version: 2
-      groups:
-        - id: 20
-          ipv4: 192.168.20.3
-          ipv6: None
-          priority: 130
-          preempt: true
-        - id: 21
-          ipv4: None
-          ipv6: 2001:DB8:100:20::3
-          priority: 130
-          preempt: true
-  - name: Ethernet0/0.30
-    vlan_id: 30
-    description: Voice
-    ipv4:
-      address: 192.168.30.2
-      mask: 255.255.255.0
-    ipv6:
-      address: 2001:DB8:100:30::2
-      prefix: 64
-    standby:
-      version: 2
-      groups:
-        - id: 30
-          ipv4: 192.168.30.3
-          ipv6: None
-          priority: 130
-          preempt: false
-        - id: 31
-          ipv4: None
-          ipv6: 2001:DB8:100:30::3
-          priority: 130
-          preempt: false
-  - name: Ethernet0/0.40
-    vlan_id: 40
-    description: Printers
-    ipv4:
-      address: 192.168.40.2
-      mask: 255.255.255.0
-    ipv6:
-      address: 2001:DB8:100:40::2
-      prefix: 64
-    standby:
-      version: 2
-      groups:
-        - id: 40
-          ipv4: 192.168.40.3
-          ipv6: None
-          priority: 150
-          preempt: true
-        - id: 41
-          ipv4: None
-          ipv6: 2001:DB8:100:40::3
-          priority: 150
-          preempt: true
-unused_ports:
+  loopbacks:
+    - name: "Loopback0"
+      description: "Loopback management interface"
+      ipv4: 
+        address: 10.9.10.7
+        mask: 255.255.255.0
+      ipv6:
+        address: 2001:DB8:D1:10::7
+        prefix: 64
   Ethernet:
-    - "Ethernet0/2"
-    - "Ethernet1/0"
-    - "Ethernet1/1"
-  Serial:
-    - "Serial2/0"
-    - "Serial2/1"
-  shutdown: true
+    - name: Ethernet0/0
+      description: "From Customer Office"
+      shutdown: false
+    - name: Ethernet0/1
+      description: "Towards WAN1"
+      shutdown: false
+      ipv4:
+        address: 10.9.10.2
+        mask: 255.255.255.0
+      ipv6:
+        address: 2001:DB8:D1:10::2
+        prefix: 64
+      standby:
+        version: 2
+        groups:
+          - id: 10
+            ipv4: 10.9.10.5
+            ipv6: None
+            priority: 110
+            preempt: false
+          - id: 11
+            ipv4: None
+            ipv6: 2001:DB8:D1:10::5
+            priority: 110
+            preempt: false
+  subinterfaces:
+    - name: Ethernet0/0.10
+      vlan_id: 10
+      description: Management
+      ipv4:
+        address: 192.168.10.2
+        mask: 255.255.255.0
+      ipv6:
+        address: 2001:DB8:100:10::2
+        prefix: 64
+      standby:
+        version: 2
+        groups:
+          - id: 10
+            ipv4: 192.168.10.3
+            ipv6: None
+            priority: 110
+            preempt: false
+          - id: 11
+            ipv4: None
+            ipv6: 2001:DB8:100:10::3
+            priority: 110
+            preempt: false
+    - name: Ethernet0/0.20
+      vlan_id: 20
+      description: Customer
+      ipv4:
+        address: 192.168.20.2
+        mask: 255.255.255.0
+      ipv6:
+        address: 2001:DB8:100:20::2
+        prefix: 64
+      standby:
+        version: 2
+        groups:
+          - id: 20
+            ipv4: 192.168.20.3
+            ipv6: None
+            priority: 130
+            preempt: true
+          - id: 21
+            ipv4: None
+            ipv6: 2001:DB8:100:20::3
+            priority: 130
+            preempt: true
+    - name: Ethernet0/0.30
+      vlan_id: 30
+      description: Voice
+      ipv4:
+        address: 192.168.30.2
+        mask: 255.255.255.0
+      ipv6:
+        address: 2001:DB8:100:30::2
+        prefix: 64
+      standby:
+        version: 2
+        groups:
+          - id: 30
+            ipv4: 192.168.30.3
+            ipv6: None
+            priority: 130
+            preempt: false
+          - id: 31
+            ipv4: None
+            ipv6: 2001:DB8:100:30::3
+            priority: 130
+            preempt: false
+    - name: Ethernet0/0.40
+      vlan_id: 40
+      description: Printers
+      ipv4:
+        address: 192.168.40.2
+        mask: 255.255.255.0
+      ipv6:
+        address: 2001:DB8:100:40::2
+        prefix: 64
+      standby:
+        version: 2
+        groups:
+          - id: 40
+            ipv4: 192.168.40.3
+            ipv6: None
+            priority: 150
+            preempt: true
+          - id: 41
+            ipv4: None
+            ipv6: 2001:DB8:100:40::3
+            priority: 150
+            preempt: true
+  unused_ports:
+    Ethernet:
+      range: "Ethernet0/2 - 1/3"
+    Serial:
+      range: "Serial2/0 - 3/3"
+    shutdown: true
 static_routes:
   ipv4:
     - destination: 0.0.0.0
