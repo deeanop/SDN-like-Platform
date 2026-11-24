@@ -27,51 +27,51 @@ interfaces:
         prefix: 64
     - name: "vlan 1"
       shutdown: true
-etherchannels:
-  - group: 8
-    protocol: lacp
-    mode: active
-    interfaces:
-      - Ethernet0/0
-      - Ethernet0/1
-    port_channel: Port-channel8
-    switchport_mode: trunk
-    allowed_vlans: "10,50,100"
-    native_vlan: 100
-  - group: 7
-    protocol: lacp
-    mode: active
-    interfaces:
-      - Ethernet0/2
-      - Ethernet0/3
-    port_channel: Port-channel7
-    switchport_mode: trunk
-    allowed_vlans: "10,50,100"
-    native_vlan: 100
-  - group: 4
-    protocol: lacp
-    mode: passive
-    interfaces:
-      - Ethernet1/0
-      - Ethernet1/1
-    port_channel: Port-channel4
-    switchport_mode: trunk
-    allowed_vlans: "10,50,100"
-    native_vlan: 100
-  - group: 3
-    protocol: lacp
-    mode: passive
-    interfaces:
-      - Ethernet1/2
-      - Ethernet1/3
-    port_channel: Port-channel3
-    switchport_mode: trunk
-    allowed_vlans: "10,50,100"
-    native_vlan: 100
-unused_ports:
-  range: "Ethernet2/0 - 3/3"
-  vlan: 90
-  shutdown: true
+  etherchannels:
+    - group: 8
+      protocol: lacp
+      mode: active
+      interfaces:
+        - Ethernet0/0
+        - Ethernet0/1
+      port_channel: Port-channel8
+      switchport_mode: trunk
+      allowed_vlans: "10,50,100"
+      native_vlan: 100
+    - group: 7
+      protocol: lacp
+      mode: active
+      interfaces:
+        - Ethernet0/2
+        - Ethernet0/3
+      port_channel: Port-channel7
+      switchport_mode: trunk
+      allowed_vlans: "10,50,100"
+      native_vlan: 100
+    - group: 4
+      protocol: lacp
+      mode: passive
+      interfaces:
+        - Ethernet1/0
+        - Ethernet1/1
+      port_channel: Port-channel4
+      switchport_mode: trunk
+      allowed_vlans: "10,50,100"
+      native_vlan: 100
+    - group: 3
+      protocol: lacp
+      mode: passive
+      interfaces:
+        - Ethernet1/2
+        - Ethernet1/3
+      port_channel: Port-channel3
+      switchport_mode: trunk
+      allowed_vlans: "10,50,100"
+      native_vlan: 100
+  unused_interfaces:
+    range: "Ethernet2/0 - 3/3"
+    vlan: 90
+    shutdown: true
 spanning_tree:
   mode: rapid-pvst
 security:
