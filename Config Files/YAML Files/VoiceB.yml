@@ -30,6 +30,11 @@ interfaces:
   access:
     - name: Ethernet0/2
       vlan: 50
+      port_security:
+        enabled: true
+        mode: sticky
+        maximum: 1
+        violation: shutdown
   trunk:
     - name: Ethernet0/0
       allowed_vlans: "10,50,100"
@@ -61,6 +66,10 @@ security:
     attempts: 3
     within_seconds: 60
     block_seconds: 120
+  layer_2:
+    port_security:
+      enabled: true
+      violation: shutdown
 time:
   timezone: UTC
   offset_hours: 2
