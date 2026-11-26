@@ -34,17 +34,39 @@ interfaces:
   access:
     - name: Ethernet0/0
       vlan: 30
+      ip_source_guard: true
+      port_security:
+        enabled: true
+        mode: dynamic
+        maximum: 3
+        violation: shutdown
     - name: Ethernet0/1
       vlan: 40
+      ip_source_guard: true
+      port_security: 
+        enabled: true
+        mode: dynamic
+        maximum: 3
+        violation: shutdown
     - name: Ethernet0/2
       vlan: 20
+      ip_source_guard: true
+      port_security:
+        enabled: true
+        mode: dynamic
+        maximum: 3
+        violation: shutdown
   trunk:
     - name: Ethernet0/3
       allowed_vlans: "10,20,30,40,100"
       native_vlan: 100
+      dhcp_snooping_trust: true
+      dynamic_arp_inspection_trust: true
     - name: Ethernet1/0
       allowed_vlans: "10,20,30,40,100"
       native_vlan: 100
+      dhcp_snooping_trust: true
+      dynamic_arp_inspection_trust: true
   unused_interfaces:
     range: "Ethernet1/1 - 3/3"
     vlan: 90
@@ -69,6 +91,19 @@ security:
     attempts: 3
     within_seconds: 60
     block_seconds: 120
+  layer_2:
+    port_security:
+      enabled: true
+      violation: shutdown
+    dhcp_snooping:
+      enabled: true
+      vlans: "10,20,30,40"
+    dynamic_arp_inspection:
+      enabled: true
+      vlans: "10,20,30,40"
+    ip_source_guard:
+      enabled: true
+      mode: ip
 time:
   timezone: UTC
   offset_hours: 2
