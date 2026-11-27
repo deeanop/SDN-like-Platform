@@ -43,8 +43,8 @@ interfaces:
     - name: Ethernet0/1
       vlan: 40
       ip_source_guard: true
-      mac_address: 02:42:b7:7f:49:00
-      ipv4_address: 192.168.40.20
+      mac_address: 02:42:ec:5c:81:00
+      ipv4_address: 192.168.40.23
       port_security: 
         enabled: true
         mode: dynamic
@@ -53,8 +53,8 @@ interfaces:
     - name: Ethernet0/2
       vlan: 20
       ip_source_guard: true
-      mac_address: 02:42:13:ba:a5:00
-      ipv4_address: 192.168.20.20
+      mac_address: 02:42:3f:81:27:00
+      ipv4_address: 192.168.20.23
       port_security:
         enabled: true
         mode: dynamic
