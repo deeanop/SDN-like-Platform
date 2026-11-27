@@ -44,7 +44,7 @@ interfaces:
       vlan: 40
       ip_source_guard: true
       mac_address: 02:42:d8:f8:02:01
-      ipv4_address: 192.168.40.22
+      ipv4_address: 192.168.40.21
       port_security:
         enabled: true
         mode: dynamic
@@ -54,7 +54,7 @@ interfaces:
       vlan: 20
       ip_source_guard: true
       mac_address: 02:42:30:2c:98:01
-      ipv4_address: 192.168.20.22
+      ipv4_address: 192.168.20.21
       port_Security:
         enabled: true
         mode: dynamic
