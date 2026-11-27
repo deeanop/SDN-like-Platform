@@ -33,10 +33,10 @@ interfaces:
       shutdown: true
   trunk:
     - name: Ethernet0/0
-      allowed_vlans: "10,20,30,40,100"
+      allowed_vlans: [10,20,30,40,100]
       native_vlan: 100
     - name: Ethernet0/1
-      allowed_vlans: "10,20,30,40,100"
+      allowed_vlans: [10,20,30,40,100]
       native_vlan: 100
   etherchannels:
     - group: 2
@@ -47,7 +47,7 @@ interfaces:
         - Ethernet0/3
       port_channel: Port-channel2
       switchport_mode: trunk
-      allowed_vlans: "10,20,30,40,100"
+      allowed_vlans: [10,20,30,40,100]
       native_vlan: 100
   unused_interfaces:
     range: "Ethernet1/0 - 3/3"
