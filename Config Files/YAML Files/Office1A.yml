@@ -43,6 +43,8 @@ interfaces:
     - name: Ethernet0/1
       vlan: 40
       ip_source_guard: true
+      mac_address: 02:42:b7:7f:49:00
+      ipv4_address: 192.168.40.20
       port_security:
         enabled: true
         mode: dynamic
@@ -51,6 +53,8 @@ interfaces:
     - name: Ethernet0/2
       vlan: 20
       ip_source_guard: true
+      mac_address: 02:42:13:ba:a5:00
+      ipv4_address: 192.168.20.20
       port_security:
         enabled: true
         mode: dynamic
@@ -58,12 +62,12 @@ interfaces:
         violation: shutdown
   trunk:
     - name: Ethernet0/3
-      allowed_vlans: "10,20,30,40,100"
+      allowed_vlans: [10,20,30,40,100]
       native_vlan: 100
       dhcp_snooping_trust: true
       dynamic_arp_inspection_trust: true
     - name: Ethernet1/0
-      allowed_vlans: "10,20,30,40,100"
+      allowed_vlans: [10,20,30,40,100]
       native_vlan: 100
       dhcp_snooping_trust: true
       dynamic_arp_inspection_trust: true
@@ -97,10 +101,10 @@ security:
       violation: shutdown
     dhcp_snooping:
       enabled: true
-      vlans: "10,20,30,40"
+      vlans: [10,20,30,40]
     dynamic_arp_inspection:
       enabled: true
-      vlans: "10,20,30,40"
+      vlans: [10,20,30,40]
     ip_source_guard:
       enabled: true
       mode: ip
